@@ -66,3 +66,4 @@ DESCRIPTOR_VOCABULARY = [
     ('ICD-10', _('ICD-10: International Classification of Diseases (10th. rev.)')),
     ('CAS', _('Chemical Abstracts Service')),
 ]
+

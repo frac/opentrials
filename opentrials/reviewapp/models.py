@@ -10,7 +10,6 @@ from utilities import safe_truncate
 
 from tickets.models import Ticket
 
-from reviewapp.signals import create_user_profile
 from django.db.models.signals import post_save
 
 import settings
@@ -214,5 +213,8 @@ class News(models.Model):
     def __unicode__(self):
         return '%s' % (self.short_title())
 
-
+# SIGNALS
+def create_user_profile(sender, instance,**kwargs):
+    UserProfile.objects.get_or_create(user=instance)
+    
 post_save.connect(create_user_profile, sender=User)
