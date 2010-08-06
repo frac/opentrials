@@ -57,8 +57,14 @@ class ReviewModelForm(MultilingualBaseForm):
                     label = ''
 
                 # Sets label with an asterisk if this is a obligatory field according to to validation rules
-                if trial_validator.field_is_required(self.__class__, name):
+                if trial_validator.field_is_required(self, name):
                     label = label + ' (*)'
+
+                # Gets the field status for this field to use it as CSS class
+                if self.instance:
+                    field_status = trial_validator.get_field_status(self, name, self.instance)
+                else:
+                    field_status = ''
 
                 if field.help_text:
                     help_text = help_text_html % force_unicode(field.help_text)
@@ -74,6 +80,7 @@ class ReviewModelForm(MultilingualBaseForm):
                                             'field': unicode(bf),
                                             'help_text': help_text,
                                             'help_id': 'id_%s-help%s' % ((self.prefix or name),help_record.pk),
+                                            'field_class': field_status,
                                             })
         if top_errors:
             output.insert(0, error_row % force_unicode(top_errors))
@@ -107,7 +114,7 @@ class ReviewModelForm(MultilingualBaseForm):
     def as_table(self):
         "Returns this form rendered as HTML <tr>s -- excluding the <table></table>."
         normal_row = u'''
-            <tr><th><img src="/static/help.png" rel="#%(help_id)s"/>
+            <tr class="%(field_class)s"><th><img src="/static/help.png" rel="#%(help_id)s"/>
                     <div id="%(help_id)s" class="help">%(help_text)s</div>
                     %(label)s</th>
                 <td>%(errors)s%(field)s

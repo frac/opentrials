@@ -228,21 +228,44 @@ class TrialValidator(object):
         instance.submission.fields_status = pickle.dumps(fields_status)
         instance.submission.save()
 
-    def field_is_required(self, form_class, field_name):
+    def field_is_required(self, form, field_name):
         """Returns a boolean value about this is a required field according to validation rules"""
+
+        # Returns this is or is not a required field
+        try:
+            rules = self.get_rules_by_field(form, field_name)
+
+            if rules:
+                return rules['required']
+        except KeyError:
+            pass
+    
+    def get_rules_by_field(self, form, field_name):
+        """Returns a dictionary with rules from constant FIELDS for a given field."""
 
         # Gets step where the given form is
         step_in = None
         for step, forms in self.steps_forms.items():
-            if form_class in forms:
+            if form.__class__ in forms:
                 step_in = step
                 break
 
-        # Returns this is or is not a required field
+        # Returns the rules from a dictionary
         try:
-            return FIELDS[step_in][field_name]['required']
+            return FIELDS[step_in][field_name]
         except KeyError:
-            raise Exception(form_class, step_in, field_name)
+            pass
+
+    def get_field_status(self, form, field_name, instance):
+        """Returns the status of a given field, for a given instance.submission"""
+
+        rules = self.get_rules_by_field(form, field_name)
+
+        if rules and rules['required']:
+            if not form.initial.get(field_name, None):
+                return 'required'
+
+        return ''
 
 trial_validator = TrialValidator()
 

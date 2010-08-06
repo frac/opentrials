@@ -1,3 +1,5 @@
+import pickle
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
@@ -117,6 +119,12 @@ class Submission(models.Model):
     def get_absolute_url(self):
         # TODO: use reverse to replace absolute path
         return '/accounts/submission/%s/' % self.id
+
+    def get_fields_status(self):
+        if not getattr(self, '_fields_status', None):
+            self._fields_status = pickle.loads(self.fields_status.encode('utf-8'))
+
+        return self._fields_status
 
 class RecruitmentCountry(models.Model):
     class Meta:

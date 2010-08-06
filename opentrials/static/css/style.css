@@ -835,3 +835,22 @@ legend{
 .barra_MSaude .barra1000 DIV a span  {
     display: none;
 }
+
+/* TRIAL FORMS VALIDATION */
+
+tr.required {
+    background-color: red;
+}
+
+tr.required th {
+    background-color: maroon;
+}
+
+tr.required th, tr.required td {
+    color: white;
+}
+
+tr.required td input, tr.required td select, tr.required td textarea {
+    color: auto;
+}
+
