@@ -9,6 +9,7 @@ import re, pickle # XXX: simplejson is more elegant than pickle to serialize val
 from django.template.defaultfilters import slugify
 
 from reviewapp.consts import STEP_STATES, REMARK, MISSING, PARTIAL, COMPLETE, TRIAL_FORMS
+from polyglot.multilingual_forms import BaseMultilingualWidget
 
 FIELDS = {
     TRIAL_FORMS[0]: {
@@ -262,8 +263,27 @@ class TrialValidator(object):
         rules = self.get_rules_by_field(form, field_name)
 
         if rules and rules['required']:
-            if not form.initial.get(field_name, None):
-                return 'required'
+            if field_name in form.fields:
+                field = form.fields[field_name]
+                field_value = form.initial.get(field_name, None)
+
+                # For multilingual fields
+                if isinstance(field.widget, BaseMultilingualWidget):
+                    # Default language value (english)
+                    values = [field_value]
+
+                    # Values for available languages (except to english)
+                    for lang in field.available_languages:
+                        if lang != 'en':
+                            values.append(field.widget.get_value_by_language(field_name, field_value, lang))
+
+                    # Returns "required" if any of translation values is not valid
+                    if not all(values):
+                        return 'required'
+
+                # For common fields
+                elif not field_value:
+                    return 'required'
 
         return ''
 
