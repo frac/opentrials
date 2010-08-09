@@ -83,7 +83,17 @@ blockquote {
     top: -1em;
     left: 0;
 }
+<<<<<<< HEAD
 
+=======
+.identification H1 {
+    margin: 0px 0px 0px 40px;
+    clear: both;
+    padding-top: 5px;
+    height:67px;
+	background: url(../images/logo.png) bottom left no-repeat;
+}
+>>>>>>> 11bdfb0f77639c7124d77d921a23116ee708f852
 
 .identification H1 A {
     color: transparent;
