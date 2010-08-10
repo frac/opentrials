@@ -17,14 +17,16 @@ pre {
 }
 
 H2, .topMenu LI A, .NewsTitle {
-    letter-spacing: -1px;
+    xletter-spacing: -1px;
 }
 
 
-H2 {
+H2, H2 a {
     color: #006837;
     text-transform: uppercase;
     margin: 0px;
+	text-decoration:none;
+	font-size:19px;
 }
 IMG {
     border: none;
@@ -79,19 +81,13 @@ blockquote {
 }
 .identification {
     position: absolute;
-    top: 2em;
+    top: -1em;
     left: 0;
 }
-.identification H1 {
-    margin: 0px 0px 0px 40px;
-    clear: both;
-    padding-top: 5px;
-    height:58px;
-	background: url(../images/logo.png) bottom left no-repeat;
-}
+
 
 .identification H1 A {
-    color: #0c4762;
+    color: transparent;
     text-decoration: none;
 
 }
@@ -99,25 +95,8 @@ blockquote {
     margin: 0px;
     padding-left: 3.2em;
 }
-.institutions UL LI {
-    float: left;
-    margin-right: 12px;
-}
-.institutions A#FIOCRUZ {
-    display: block;
-    width: 104px;
-    height: 30px;
-    xbackground: url(../images/fiocruz.png) no-repeat;
-}
-.institutions A#BIREME {
-    display: block;
-    width: 55px;
-    height: 30px;
-    xbackground: url(../images/bireme.png) no-repeat;
-}
-.institutions A SPAN {
-    display: none;
-}
+
+
 .topRight {
     float: right;
     width: 440px;
@@ -225,52 +204,82 @@ blockquote {
     vertical-align: middle;
 }
 
+.menu {
+    background: #e6ecef;
+    padding: 12px 40px;
+    text-transform: uppercase;
+}
+
+.bottomMenu {
+    float: left;
+    margin: 19px 2px 0px 2px;
+}
+
 /* TOP MENU */
 .topMenu {
     float: left;
-    margin: 19px 2px 0px 2px;
+    margin: 3px 2px 0px 2px;
 }
 .topMenu UL {
     margin: 0px;
     padding: 0px;
 }
-.topMenu LI {
+.topMenu LI, .languages LI {
     display: inline;
-    border-right: 1px solid #b00303;
+    border-right: 1px solid #006837;
     padding: 0px 8px 0px 4px;
 }
 .topMenu LI:last-child {
     border-right: none;
 }
-.topMenu LI A {
-    color: #b00303;
-    font-weight: bold;
+.topMenu LI A, .languages A {
+    color: #006837;
+    xfont-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
+	font-size:16px;
 }
-.topMenu LI A:hover {
-    color: #ff0000;
+.topMenu LI A:hover, languages A:hover {
+    color: #05914f;
 }
 .search {
-    margin-top: 18px;
+    margin-top: 4px;
+    width: 40%;
+    float: left;
 }
 .search .submit {
     background: url(../images/submit_search.gif) no-repeat;
-    color: #1c4507;
-    text-transform: uppercase;
-    font-size: 80%;
+    color: #FFF;
+    font-size: 90%;
     border: 0px;
-    padding: 4px;
-    width: 61px;
-    height: 20px;
+    padding: 5px;
+	font-weight:bold;
+    width: 118px;
+
 }
 .search .submit:hover {
-    background: url(../images/submit_searchHover.gif) no-repeat;
+    xbackground: url(../images/submit_searchHover.gif) no-repeat;
 }
+.languages {
+    float: right;
+    margin: 3px 2px 0px 2px;
+}
+.languages UL {
+    margin: 0px;
+    padding: 0px;
+}
+.languages LI {
+    display: inline;
+    padding: 0px 8px 0px 4px;
+}
+.languages LI:last-child {
+    border-right: none;
+}
+
 
 /* BREADCRUMB */
 .breadcrumb {
-    background: #e6ecef;
+    background: #f6fbfd;
     padding: 12px 40px;
     text-transform: uppercase;
 }
@@ -278,7 +287,7 @@ blockquote {
     color: #0c4762;
     font-weight: bold;
     letter-spacing: -1px;
-    font-size: 130%;
+    font-size: 115%;
 }
 .breadcrumb SMALL.current A {
     color: #b00303;
@@ -287,7 +296,7 @@ blockquote {
     font-size: 150%;
 }
 .breadcrumb BIG {
-    color: #b00303;
+    color: #006837;
     font-weight: bold;
     letter-spacing: -1px;
     font-size: 150%;
@@ -390,6 +399,11 @@ blockquote {
     display: none;
 }
 
+.sideBar {
+    float: left;
+    width: 43%;
+}
+
 .middle .news {
     padding-right: 17px;
 }
@@ -431,7 +445,18 @@ font-size:101%;
 }
 
 .highlights {
-    padding-top: 30px;
+    height:41px;
+}
+
+.highlights img{
+   height:46px;
+margin-left:112px;
+	
+}
+
+.highlights ul {
+ margin-top:0px !important;
+	
 }
 .links LI {
     margin-bottom: 12px;
@@ -708,9 +733,10 @@ table.trialsummary {
     clear: both;
     margin-top: 20px;
     padding: 5px;
-    border-width: 1px 0 0;
-    background:#0c4762;
+    border-top: 5px solid #2e3192;
+    background:#ffcb00;
     font-size:80%;
+	height:60px;
 
 }
 
@@ -729,7 +755,52 @@ table.trialsummary {
     margin-left: 20px;
     line-height: 150%;
 }
+.institutions{
+	margin-left:180px;
+	}
+.institutions UL LI {
+    float: left;
+    margin-right: 12px;
+	display:inline;
+}
+.institutions A#FIOCRUZ {
+    width: 104px;
+    height: 30px;
+    background: url(../images/fiocruz.png) no-repeat !important;
+	display:block;
+	margin-top:10px;
+}
+.institutions A#BIREME {
+   height:48px;
+margin-top:10px;
+width:114px;
+    background: url(../images/bireme.png) no-repeat !important;
+	display:block;
 
+}
+.institutions A#SUS{
+    width: 90px;
+    height: 50px;
+    background: url(../images/sus.gif) no-repeat !important;
+	display:block;
+}
+.institutions A#MINISTERIOSAUDE{
+    width: 97px;
+    height: 30px;
+    background: url(../images/ms.gif) no-repeat !important;
+	display:block;
+	margin-top:10px;
+}
+.institutions A#GOVERNOFEDERAL {
+    width: 112px;
+    height: 30px;
+    background: url(../images/gov.gif) no-repeat !important;
+	display:block;
+	margin-top:10px;
+}
+.institutions A SPAN {
+ 	display:none;
+}
 
 /* AJAX DeCS Tools */
 td div.decstool {
@@ -852,8 +923,8 @@ a.pnumber{
 	text-decoration:none;
 	}
 .news table{
-	 background: url(../images/line.gif) bottom left repeat-x;
-	 min-width:70%;
+	 background: url(../images/line.gif) bottom left no-repeat;
+	 min-width:59%;
 	 color:#808080;
 	}
 td a.NewsExcerpt{
@@ -866,22 +937,3 @@ ul{
 	margin-left:0px;
 	padding-left:0px; 
 	}
-
-/* TRIAL FORMS VALIDATION */
-
-tr.required {
-    background-color: red;
-}
-
-tr.required th {
-    background-color: maroon;
-}
-
-tr.required th, tr.required td {
-    color: white;
-}
-
-tr.required td input, tr.required td select, tr.required td textarea {
-    color: auto;
-}
-

@@ -18,7 +18,7 @@
 }
 
 .multilingual .multilingual-value b {
-    margin: 3px 0 0 0;
+    margin: 0;
     display: block;
 }
 
@@ -45,13 +45,5 @@
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-.required .multilingual .sel {
-    background-color: maroon;
-}
-
-.required .multilingual .sel a {
-    color: inherit;
 }
 
