@@ -399,6 +399,11 @@ blockquote {
     display: none;
 }
 
+.sideBar {
+    float: left;
+    width: 43%;
+}
+
 .middle .news {
     padding-right: 17px;
 }
