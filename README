@@ -60,3 +60,9 @@ After that::
     There is also a WSGI script automatically created in ./bin/ directory that should be used
     by Apache or Lighttpd (or another web server).
 
+Alternate Install
+-----------------
+
+Use the pip requirements file 
+
+    pip install -r requirements.txt
