@@ -1,0 +1,11 @@
+django-nose
+django-test-extensions
+django-test-utils
+South
+django-registration
+django-rosetta
+PIL
+NoseNotify
+lxml
+mysql-python
+-e svn+http://django-plus.googlecode.com/svn/trunk/#egg=django-plus
